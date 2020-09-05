@@ -5,22 +5,15 @@ Mockery Global Configuration
 ============================
 
 To allow for a degree of fine-tuning, Mockery utilises a singleton
-<<<<<<< HEAD
 configuration object to store a small subset of core behaviours. The three
-=======
-configuration object to store a small subset of core behaviours. The two
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 currently present include:
 
 * Option to allow/disallow the mocking of methods which do not actually exist
   fulfilled (i.e. unused)
 * Setter/Getter for added a parameter map for internal PHP class methods
   (``Reflection`` cannot detect these automatically)
-<<<<<<< HEAD
 * Option to drive if quick definitions should define a stub or a mock with
   an 'at least once' expectation.
-=======
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 
 By default, the first behaviour is enabled. Of course, there are
 situations where this can lead to unintended consequences. The mocking of
@@ -58,7 +51,6 @@ won't correctly add it automatically for internal classes. Note that internal cl
 parameter overriding is not available in PHP 8. This is because incompatible
 signatures have been reclassified as fatal errors.
 
-<<<<<<< HEAD
 Finally there is the possibility to change what a quick definition produces.
 By default quick definitions create stubs but you can change this behaviour
 by asking Mockery to use 'at least once' expectations.
@@ -72,8 +64,6 @@ immediately until switched back. By doing so you can avoid the proliferating of
 quick definitions that accumulate overtime in your code since the test would
 fail in case the 'at least once' expectation is not fulfilled.
 
-=======
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 Disabling reflection caching
 ----------------------------
 

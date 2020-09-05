@@ -35,19 +35,9 @@ class Reflector
      */
     public static function isArray(\ReflectionParameter $param)
     {
-<<<<<<< HEAD
         $type = $param->getType();
 
         return $type instanceof \ReflectionNamedType && $type->getName();
-=======
-        if (\PHP_VERSION_ID < 70100) {
-            return $param->isArray();
-        }
-
-        $type = $param->getType();
-
-        return $type instanceof \ReflectionNamedType ? $type->getName() === 'array' : false;
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
@@ -60,16 +50,6 @@ class Reflector
      */
     public static function getTypeHint(\ReflectionParameter $param, $withoutNullable = false)
     {
-<<<<<<< HEAD
-=======
-        // returns false if we are running PHP 7+
-        $typeHint = self::getLegacyTypeHint($param);
-
-        if ($typeHint !== false) {
-            return $typeHint;
-        }
-
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         if (!$param->hasType()) {
             return null;
         }
@@ -78,12 +58,7 @@ class Reflector
         $declaringClass = $param->getDeclaringClass();
         $typeHint = self::typeToString($type, $declaringClass);
 
-<<<<<<< HEAD
         return (!$withoutNullable && $type->allowsNull()) ? self::formatNullableType($typeHint) : $typeHint;
-=======
-        // PHP 7.1+ supports nullable types via a leading question mark
-        return (!$withoutNullable && \PHP_VERSION_ID >= 70100 && $type->allowsNull()) ? self::formatNullableType($typeHint) : $typeHint;
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
@@ -96,12 +71,7 @@ class Reflector
      */
     public static function getReturnType(\ReflectionMethod $method, $withoutNullable = false)
     {
-<<<<<<< HEAD
         if (!$method->hasReturnType()) {
-=======
-        // Strip all return types for HHVM and skip PHP 5.
-        if (method_exists($method, 'getReturnTypeText') || \PHP_VERSION_ID < 70000 || !$method->hasReturnType()) {
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             return null;
         }
 
@@ -109,108 +79,14 @@ class Reflector
         $declaringClass = $method->getDeclaringClass();
         $typeHint = self::typeToString($type, $declaringClass);
 
-<<<<<<< HEAD
         return (!$withoutNullable && $type->allowsNull()) ? self::formatNullableType($typeHint) : $typeHint;
-=======
-        // PHP 7.1+ supports nullable types via a leading question mark
-        return (!$withoutNullable && \PHP_VERSION_ID >= 70100 && $type->allowsNull()) ? self::formatNullableType($typeHint) : $typeHint;
-    }
-
-    /**
-     * Compute the legacy type hint.
-     *
-     * We return:
-     *   - string: the legacy type hint
-     *   - null: if there is no legacy type hint
-     *   - false: if we must check for PHP 7+ typing
-     *
-     * @param \ReflectionParameter $param
-     *
-     * @return string|null|false
-     */
-    private static function getLegacyTypeHint(\ReflectionParameter $param)
-    {
-        // Handle HHVM typing
-        if (\method_exists($param, 'getTypehintText')) {
-            if ($param->isArray()) {
-                return 'array';
-            }
-
-            if ($param->isCallable()) {
-                return 'callable';
-            }
-
-            $typeHint = $param->getTypehintText();
-
-            // throw away HHVM scalar types
-            if (\in_array($typeHint, array('int', 'integer', 'float', 'string', 'bool', 'boolean'), true)) {
-                return null;
-            }
-
-            return sprintf('\\%s', $typeHint);
-        }
-
-        // Handle PHP 5 typing
-        if (\PHP_VERSION_ID < 70000) {
-            if ($param->isArray()) {
-                return 'array';
-            }
-
-            if ($param->isCallable()) {
-                return 'callable';
-            }
-
-            $typeHint = self::getLegacyClassName($param);
-
-            return $typeHint === null ? null : sprintf('\\%s', $typeHint);
-        }
-
-        return false;
-    }
-
-    /**
-     * Compute the class name using legacy APIs, if possible.
-     *
-     * This method MUST only be called on PHP 5.
-     *
-     * @param \ReflectionParameter $param
-     *
-     * @return string|null
-     */
-    private static function getLegacyClassName(\ReflectionParameter $param)
-    {
-        try {
-            $class = $param->getClass();
-
-            $typeHint = $class === null ? null : $class->getName();
-        } catch (\ReflectionException $e) {
-            $typeHint = null;
-        }
-
-        if ($typeHint === null) {
-            if (preg_match('/^Parameter #[0-9]+ \[ \<(required|optional)\> (?<typehint>\S+ )?.*\$' . $param->getName() . ' .*\]$/', (string) $param, $typehintMatch)) {
-                if (!empty($typehintMatch['typehint']) && $typehintMatch['typehint']) {
-                    $typeHint = $typehintMatch['typehint'];
-                }
-            }
-        }
-
-        return $typeHint;
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
      * Get the string representation of the given type.
      *
-<<<<<<< HEAD
      * @param \ReflectionType $type
      * @param string $declaringClass
-=======
-     * This method MUST only be called on PHP 7+.
-     *
-     * @param \ReflectionType  $type
-     * @param \ReflectionClass $declaringClass
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
      *
      * @return string|null
      */
@@ -223,13 +99,8 @@ class Reflector
             }, $type->getTypes()));
         }
 
-<<<<<<< HEAD
         // $type must be an instance of \ReflectionNamedType
         $typeHint = $type->getName();
-=======
-        // PHP 7.0 doesn't have named types, but 7.1+ does
-        $typeHint = $type instanceof \ReflectionNamedType ? $type->getName() : (string) $type;
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 
         // builtins and 'static' can be returned as is
         if (($type->isBuiltin() || $typeHint === 'static')) {

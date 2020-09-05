@@ -190,15 +190,6 @@ class Container
 
         $builder->addBlackListedMethods($blocks);
 
-<<<<<<< HEAD
-=======
-        if (defined('HHVM_VERSION')
-            && ($class === 'Exception' || is_subclass_of($class, 'Exception'))) {
-            $builder->addBlackListedMethod("setTraceOptions");
-            $builder->addBlackListedMethod("getTraceOptions");
-        }
-
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         if (!is_null($constructorArgs)) {
             $builder->addBlackListedMethod("__construct"); // we need to pass through
         } else {
@@ -228,15 +219,11 @@ class Container
         $mock->mockery_init($this, $config->getTargetObject(), $config->isInstanceMock());
 
         if (!empty($quickdefs)) {
-<<<<<<< HEAD
             if (\Mockery::getConfiguration()->getQuickDefinitions()->shouldBeCalledAtLeastOnce()) {
                 $mock->shouldReceive($quickdefs)->atLeast()->once();
             } else {
                 $mock->shouldReceive($quickdefs)->byDefault();
             }
-=======
-            $mock->shouldReceive($quickdefs)->byDefault();
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         }
         if (!empty($expectationClosure)) {
             $expectationClosure($mock);

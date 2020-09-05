@@ -2,7 +2,6 @@
 
 namespace League\Flysystem\Adapter;
 
-<<<<<<< HEAD
 use League\Flysystem\Adapter\Polyfill\StreamedCopyTrait;
 use League\Flysystem\AdapterInterface;
 use League\Flysystem\Config;
@@ -11,15 +10,6 @@ use League\Flysystem\ConnectionRuntimeException;
 use League\Flysystem\InvalidRootException;
 use League\Flysystem\Util;
 use League\Flysystem\Util\MimeType;
-=======
-use ErrorException;
-use League\Flysystem\Adapter\Polyfill\StreamedCopyTrait;
-use League\Flysystem\AdapterInterface;
-use League\Flysystem\Config;
-use League\Flysystem\Util;
-use League\Flysystem\Util\MimeType;
-use RuntimeException;
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 
 class Ftp extends AbstractFtpAdapter
 {
@@ -64,10 +54,7 @@ class Ftp extends AbstractFtpAdapter
         'ignorePassiveAddress',
         'recurseManually',
         'utf8',
-<<<<<<< HEAD
         'enableTimestampsOnUnixListings',
-=======
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     ];
 
     /**
@@ -142,7 +129,6 @@ class Ftp extends AbstractFtpAdapter
      */
     public function connect()
     {
-<<<<<<< HEAD
         $tries = 3;
         start_connecting:
 
@@ -158,16 +144,6 @@ class Ftp extends AbstractFtpAdapter
             if ($tries > 0) goto start_connecting;
 
             throw new ConnectionRuntimeException('Could not connect to host: ' . $this->getHost() . ', port:' . $this->getPort());
-=======
-        if ($this->ssl) {
-            $this->connection = ftp_ssl_connect($this->getHost(), $this->getPort(), $this->getTimeout());
-        } else {
-            $this->connection = ftp_connect($this->getHost(), $this->getPort(), $this->getTimeout());
-        }
-
-        if ( ! $this->connection) {
-            throw new RuntimeException('Could not connect to host: ' . $this->getHost() . ', port:' . $this->getPort());
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         }
 
         $this->login();
@@ -185,11 +161,7 @@ class Ftp extends AbstractFtpAdapter
         if ($this->utf8) {
             $response = ftp_raw($this->connection, "OPTS UTF8 ON");
             if (substr($response[0], 0, 3) !== '200') {
-<<<<<<< HEAD
                 throw new ConnectionRuntimeException(
-=======
-                throw new RuntimeException(
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
                     'Could not set UTF-8 mode for connection: ' . $this->getHost() . '::' . $this->getPort()
                 );
             }
@@ -199,11 +171,7 @@ class Ftp extends AbstractFtpAdapter
     /**
      * Set the connections to passive mode.
      *
-<<<<<<< HEAD
      * @throws ConnectionRuntimeException
-=======
-     * @throws RuntimeException
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
      */
     protected function setConnectionPassiveMode()
     {
@@ -212,11 +180,7 @@ class Ftp extends AbstractFtpAdapter
         }
 
         if ( ! ftp_pasv($this->connection, $this->passive)) {
-<<<<<<< HEAD
             throw new ConnectionRuntimeException(
-=======
-            throw new RuntimeException(
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
                 'Could not set passive mode for connection: ' . $this->getHost() . '::' . $this->getPort()
             );
         }
@@ -231,11 +195,7 @@ class Ftp extends AbstractFtpAdapter
         $connection = $this->connection;
 
         if ($root && ! ftp_chdir($connection, $root)) {
-<<<<<<< HEAD
             throw new InvalidRootException('Root is invalid or does not exist: ' . $this->getRoot());
-=======
-            throw new RuntimeException('Root is invalid or does not exist: ' . $this->getRoot());
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         }
 
         // Store absolute path for further reference.
@@ -248,20 +208,12 @@ class Ftp extends AbstractFtpAdapter
     /**
      * Login.
      *
-<<<<<<< HEAD
      * @throws ConnectionRuntimeException
      */
     protected function login()
     {
         set_error_handler(function () {
         });
-=======
-     * @throws RuntimeException
-     */
-    protected function login()
-    {
-        set_error_handler(function () {});
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         $isLoggedIn = ftp_login(
             $this->connection,
             $this->getUsername(),
@@ -271,11 +223,7 @@ class Ftp extends AbstractFtpAdapter
 
         if ( ! $isLoggedIn) {
             $this->disconnect();
-<<<<<<< HEAD
             throw new ConnectionRuntimeException(
-=======
-            throw new RuntimeException(
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
                 'Could not login with connection: ' . $this->getHost() . '::' . $this->getPort(
                 ) . ', username: ' . $this->getUsername()
             );
@@ -288,11 +236,7 @@ class Ftp extends AbstractFtpAdapter
     public function disconnect()
     {
         if (is_resource($this->connection)) {
-<<<<<<< HEAD
             @ftp_close($this->connection);
-=======
-            ftp_close($this->connection);
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         }
 
         $this->connection = null;
@@ -314,11 +258,7 @@ class Ftp extends AbstractFtpAdapter
         }
 
         $result['contents'] = $contents;
-<<<<<<< HEAD
         $result['mimetype'] = $config->get('mimetype') ?: Util::guessMimeType($path, $contents);
-=======
-        $result['mimetype'] = Util::guessMimeType($path, $contents);
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 
         return $result;
     }
@@ -450,30 +390,17 @@ class Ftp extends AbstractFtpAdapter
      */
     public function getMetadata($path)
     {
-<<<<<<< HEAD
-=======
-        $connection = $this->getConnection();
-
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         if ($path === '') {
             return ['type' => 'dir', 'path' => ''];
         }
 
-<<<<<<< HEAD
         if (@ftp_chdir($this->getConnection(), $path) === true) {
-=======
-        if (@ftp_chdir($connection, $path) === true) {
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             $this->setConnectionRoot();
 
             return ['type' => 'dir', 'path' => $path];
         }
 
-<<<<<<< HEAD
         $listing = $this->ftpRawlist('-A', $path);
-=======
-        $listing = $this->ftpRawlist('-A', str_replace('*', '\\*', $path));
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 
         if (empty($listing) || in_array('total 0', $listing, true)) {
             return false;
@@ -569,11 +496,6 @@ class Ftp extends AbstractFtpAdapter
      */
     protected function listDirectoryContents($directory, $recursive = true)
     {
-<<<<<<< HEAD
-=======
-        $directory = str_replace('*', '\\*', $directory);
-
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         if ($recursive && $this->recurseManually) {
             return $this->listDirectoryContentsRecursive($directory);
         }
@@ -596,13 +518,9 @@ class Ftp extends AbstractFtpAdapter
 
         foreach ($listing as $item) {
             $output[] = $item;
-<<<<<<< HEAD
             if ($item['type'] !== 'dir') {
                 continue;
             }
-=======
-            if ($item['type'] !== 'dir') continue;
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             $output = array_merge($output, $this->listDirectoryContentsRecursive($item['path']));
         }
 
@@ -613,7 +531,6 @@ class Ftp extends AbstractFtpAdapter
      * Check if the connection is open.
      *
      * @return bool
-<<<<<<< HEAD
      *
      * @throws ConnectionErrorException
      */
@@ -621,21 +538,6 @@ class Ftp extends AbstractFtpAdapter
     {
         return is_resource($this->connection)
             && $this->getRawExecResponseCode('NOOP') === 200;
-=======
-     * @throws ErrorException
-     */
-    public function isConnected()
-    {
-        try {
-            return is_resource($this->connection) && ftp_rawlist($this->connection, $this->getRoot()) !== false;
-        } catch (ErrorException $e) {
-            if (strpos($e->getMessage(), 'ftp_rawlist') === false) {
-                throw $e;
-            }
-
-            return false;
-        }
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
@@ -662,7 +564,6 @@ class Ftp extends AbstractFtpAdapter
 
         if ($this->isPureFtpd) {
             $path = str_replace(' ', '\ ', $path);
-<<<<<<< HEAD
             $this->escapePath($path);
         }
 
@@ -675,9 +576,4 @@ class Ftp extends AbstractFtpAdapter
 
         return (int) preg_replace('/\D/', '', implode(' ', $response));
     }
-=======
-        }
-        return ftp_rawlist($connection, $options . ' ' . $path);
-    }
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 }

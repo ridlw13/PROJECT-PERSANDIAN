@@ -80,7 +80,6 @@ class Mockery
      */
     public static function builtInTypes()
     {
-<<<<<<< HEAD
         return array(
             'array',
             'bool',
@@ -93,26 +92,6 @@ class Mockery
             'string',
             'void',
         );
-=======
-        $builtInTypes = array(
-            'self',
-            'array',
-            'callable',
-            // Up to php 7
-            'bool',
-            'float',
-            'int',
-            'string',
-            'iterable',
-            'void',
-        );
-
-        if (\PHP_VERSION_ID >= 70200) {
-            $builtInTypes[] = 'object';
-        }
-
-        return $builtInTypes;
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
@@ -878,7 +857,6 @@ class Mockery
     ) {
         $newMockName = 'demeter_' . md5($parent) . '_' . $method;
 
-<<<<<<< HEAD
         $parRef = null;
         $parRefMethod = null;
         $parRefMethodRetType = null;
@@ -899,30 +877,6 @@ class Mockery
                 $exp->andReturn($mock);
 
                 return $mock;
-=======
-        if (\PHP_VERSION_ID >= 70000) {
-            $parRef = null;
-            $parRefMethod = null;
-            $parRefMethodRetType = null;
-
-            $parentMock = $exp->getMock();
-            if ($parentMock !== null) {
-                $parRef = new ReflectionObject($parentMock);
-            }
-
-            if ($parRef !== null && $parRef->hasMethod($method)) {
-                $parRefMethod = $parRef->getMethod($method);
-                $parRefMethodRetType = Reflector::getReturnType($parRefMethod, true);
-
-                if ($parRefMethodRetType !== null) {
-                    $nameBuilder = new MockNameBuilder();
-                    $nameBuilder->addPart('\\' . $newMockName);
-                    $mock = self::namedMock($nameBuilder->build(), $parRefMethodRetType);
-                    $exp->andReturn($mock);
-
-                    return $mock;
-                }
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             }
         }
 

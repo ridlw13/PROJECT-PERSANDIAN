@@ -8,7 +8,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 use Illuminate\View\AnonymousComponent;
-use Illuminate\View\ViewFinderInterface;
 use InvalidArgumentException;
 use ReflectionClass;
 
@@ -238,7 +237,7 @@ class ComponentTagCompiler
             return $class;
         }
 
-        if ($viewFactory->exists($view = $this->guessViewName($component))) {
+        if ($viewFactory->exists($view = "components.{$component}")) {
             return $view;
         }
 
@@ -264,25 +263,6 @@ class ComponentTagCompiler
         }, explode('.', $component));
 
         return $namespace.'View\\Components\\'.implode('\\', $componentPieces);
-    }
-
-    /**
-     * Guess the view name for the given component.
-     *
-     * @param  string  $name
-     * @return string
-     */
-    public function guessViewName($name)
-    {
-        $prefix = 'components.';
-
-        $delimiter = ViewFinderInterface::HINT_PATH_DELIMITER;
-
-        if (Str::contains($name, $delimiter)) {
-            return Str::replaceFirst($delimiter, $delimiter.$prefix, $name);
-        }
-
-        return $prefix.$name;
     }
 
     /**

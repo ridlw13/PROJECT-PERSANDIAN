@@ -72,7 +72,6 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
     protected $systemType;
 
     /**
-<<<<<<< HEAD
      * @var SafeStorage
      */
     protected $safeStorage;
@@ -83,16 +82,6 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
      * @var bool
      */
     protected $enableTimestampsOnUnixListings = false;
-=======
-     * @var bool
-     */
-    protected $alternativeRecursion = false;
-
-    /**
-     * @var SafeStorage
-     */
-    protected $safeStorage;
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 
     /**
      * Constructor.
@@ -328,7 +317,6 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
     }
 
     /**
-<<<<<<< HEAD
      * True to enable timestamps for FTP servers that return unix-style listings.
      *
      * @param bool $bool
@@ -343,8 +331,6 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
     }
 
     /**
-=======
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
      * @inheritdoc
      */
     public function listContents($directory = '', $recursive = false)
@@ -424,7 +410,6 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
     /**
      * Normalize a Unix file entry.
      *
-<<<<<<< HEAD
      * Given $item contains:
      *    '-rw-r--r--   1 ftp      ftp           409 Aug 19 09:01 file1.txt'
      *
@@ -437,8 +422,6 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
      *   'timestamp' => 1566205260
      * ]
      *
-=======
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
      * @param string $item
      * @param string $base
      *
@@ -452,16 +435,11 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
             throw new RuntimeException("Metadata can't be parsed from item '$item' , not enough parts.");
         }
 
-<<<<<<< HEAD
         list($permissions, /* $number */, /* $owner */, /* $group */, $size, $month, $day, $timeOrYear, $name) = explode(' ', $item, 9);
-=======
-        list($permissions, /* $number */, /* $owner */, /* $group */, $size, /* $month */, /* $day */, /* $time*/, $name) = explode(' ', $item, 9);
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         $type = $this->detectType($permissions);
         $path = $base === '' ? $name : $base . $this->separator . $name;
 
         if ($type === 'dir') {
-<<<<<<< HEAD
             $result = compact('type', 'path');
             if ($this->enableTimestampsOnUnixListings) {
                 $timestamp = $this->normalizeUnixTimestamp($month, $day, $timeOrYear);
@@ -469,16 +447,12 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
             }
 
             return $result;
-=======
-            return compact('type', 'path');
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         }
 
         $permissions = $this->normalizePermissions($permissions);
         $visibility = $permissions & 0044 ? AdapterInterface::VISIBILITY_PUBLIC : AdapterInterface::VISIBILITY_PRIVATE;
         $size = (int) $size;
 
-<<<<<<< HEAD
         $result = compact('type', 'path', 'visibility', 'size');
         if ($this->enableTimestampsOnUnixListings) {
             $timestamp = $this->normalizeUnixTimestamp($month, $day, $timeOrYear);
@@ -517,9 +491,6 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
         $dateTime = DateTime::createFromFormat('Y-M-j-G:i:s', "{$year}-{$month}-{$day}-{$hour}:{$minute}:{$seconds}");
 
         return $dateTime->getTimestamp();
-=======
-        return compact('type', 'path', 'visibility', 'size');
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
@@ -592,13 +563,10 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
      */
     protected function normalizePermissions($permissions)
     {
-<<<<<<< HEAD
         if (is_numeric($permissions)) {
             return ((int) $permissions) & 0777;
         }
 
-=======
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         // remove the type identifier
         $permissions = substr($permissions, 1);
 
@@ -677,14 +645,7 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
      */
     public function getConnection()
     {
-<<<<<<< HEAD
         if ( ! $this->isConnected()) {
-=======
-        $tries = 0;
-
-        while ( ! $this->isConnected() && $tries < 3) {
-            $tries++;
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             $this->disconnect();
             $this->connect();
         }
@@ -736,12 +697,9 @@ abstract class AbstractFtpAdapter extends AbstractAdapter
      * @return bool
      */
     abstract public function isConnected();
-<<<<<<< HEAD
 
     protected function escapePath($path)
     {
         return str_replace(['*', '[', ']'], ['\\*', '\\[', '\\]'], $path);
     }
-=======
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 }

@@ -9,10 +9,8 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
-    'App\\Http\\Controllers\\otentikasi\\OtentikasiController' => $baseDir . '/app/Http/Controllers/otentikasi/OtentikasiController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
-    'App\\Http\\Middleware\\CekLoginMiddleware' => $baseDir . '/app/Http/Middleware/CekLoginMiddleware.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -2130,28 +2128,19 @@ return array(
     'League\\Flysystem\\Adapter\\SynologyFtp' => $vendorDir . '/league/flysystem/src/Adapter/SynologyFtp.php',
     'League\\Flysystem\\Config' => $vendorDir . '/league/flysystem/src/Config.php',
     'League\\Flysystem\\ConfigAwareTrait' => $vendorDir . '/league/flysystem/src/ConfigAwareTrait.php',
-<<<<<<< HEAD
     'League\\Flysystem\\ConnectionErrorException' => $vendorDir . '/league/flysystem/src/ConnectionErrorException.php',
     'League\\Flysystem\\ConnectionRuntimeException' => $vendorDir . '/league/flysystem/src/ConnectionRuntimeException.php',
-=======
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     'League\\Flysystem\\Directory' => $vendorDir . '/league/flysystem/src/Directory.php',
     'League\\Flysystem\\Exception' => $vendorDir . '/league/flysystem/src/Exception.php',
     'League\\Flysystem\\File' => $vendorDir . '/league/flysystem/src/File.php',
     'League\\Flysystem\\FileExistsException' => $vendorDir . '/league/flysystem/src/FileExistsException.php',
     'League\\Flysystem\\FileNotFoundException' => $vendorDir . '/league/flysystem/src/FileNotFoundException.php',
     'League\\Flysystem\\Filesystem' => $vendorDir . '/league/flysystem/src/Filesystem.php',
-<<<<<<< HEAD
     'League\\Flysystem\\FilesystemException' => $vendorDir . '/league/flysystem/src/FilesystemException.php',
     'League\\Flysystem\\FilesystemInterface' => $vendorDir . '/league/flysystem/src/FilesystemInterface.php',
     'League\\Flysystem\\FilesystemNotFoundException' => $vendorDir . '/league/flysystem/src/FilesystemNotFoundException.php',
     'League\\Flysystem\\Handler' => $vendorDir . '/league/flysystem/src/Handler.php',
     'League\\Flysystem\\InvalidRootException' => $vendorDir . '/league/flysystem/src/InvalidRootException.php',
-=======
-    'League\\Flysystem\\FilesystemInterface' => $vendorDir . '/league/flysystem/src/FilesystemInterface.php',
-    'League\\Flysystem\\FilesystemNotFoundException' => $vendorDir . '/league/flysystem/src/FilesystemNotFoundException.php',
-    'League\\Flysystem\\Handler' => $vendorDir . '/league/flysystem/src/Handler.php',
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     'League\\Flysystem\\MountManager' => $vendorDir . '/league/flysystem/src/MountManager.php',
     'League\\Flysystem\\NotSupportedException' => $vendorDir . '/league/flysystem/src/NotSupportedException.php',
     'League\\Flysystem\\PluginInterface' => $vendorDir . '/league/flysystem/src/PluginInterface.php',
@@ -2173,7 +2162,6 @@ return array(
     'League\\Flysystem\\Util\\ContentListingFormatter' => $vendorDir . '/league/flysystem/src/Util/ContentListingFormatter.php',
     'League\\Flysystem\\Util\\MimeType' => $vendorDir . '/league/flysystem/src/Util/MimeType.php',
     'League\\Flysystem\\Util\\StreamHasher' => $vendorDir . '/league/flysystem/src/Util/StreamHasher.php',
-<<<<<<< HEAD
     'League\\MimeTypeDetection\\EmptyExtensionToMimeTypeMap' => $vendorDir . '/league/mime-type-detection/src/EmptyExtensionToMimeTypeMap.php',
     'League\\MimeTypeDetection\\ExtensionMimeTypeDetector' => $vendorDir . '/league/mime-type-detection/src/ExtensionMimeTypeDetector.php',
     'League\\MimeTypeDetection\\ExtensionToMimeTypeMap' => $vendorDir . '/league/mime-type-detection/src/ExtensionToMimeTypeMap.php',
@@ -2187,20 +2175,6 @@ return array(
     'Mockery\\Adapter\\Phpunit\\MockeryTestCaseSetUp' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCaseSetUp.php',
     'Mockery\\Adapter\\Phpunit\\TestListener' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/TestListener.php',
     'Mockery\\Adapter\\Phpunit\\TestListenerTrait' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/TestListenerTrait.php',
-=======
-    'Mockery' => $vendorDir . '/mockery/mockery/library/Mockery.php',
-    'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerForV5' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerForV5.php',
-    'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerForV6' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerForV6.php',
-    'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerForV7' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerForV7.php',
-    'Mockery\\Adapter\\Phpunit\\Legacy\\TestListenerTrait' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/Legacy/TestListenerTrait.php',
-    'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
-    'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditionsForV7AndPrevious' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditionsForV7AndPrevious.php',
-    'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditionsForV8' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditionsForV8.php',
-    'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',
-    'Mockery\\Adapter\\Phpunit\\MockeryTestCaseSetUpForV7AndPrevious' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCaseSetUpForV7AndPrevious.php',
-    'Mockery\\Adapter\\Phpunit\\MockeryTestCaseSetUpForV8' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCaseSetUpForV8.php',
-    'Mockery\\Adapter\\Phpunit\\TestListener' => $vendorDir . '/mockery/mockery/library/Mockery/Adapter/Phpunit/TestListener.php',
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     'Mockery\\ClosureWrapper' => $vendorDir . '/mockery/mockery/library/Mockery/ClosureWrapper.php',
     'Mockery\\CompositeExpectation' => $vendorDir . '/mockery/mockery/library/Mockery/CompositeExpectation.php',
     'Mockery\\Configuration' => $vendorDir . '/mockery/mockery/library/Mockery/Configuration.php',
@@ -2276,10 +2250,7 @@ return array(
     'Mockery\\MethodCall' => $vendorDir . '/mockery/mockery/library/Mockery/MethodCall.php',
     'Mockery\\Mock' => $vendorDir . '/mockery/mockery/library/Mockery/Mock.php',
     'Mockery\\MockInterface' => $vendorDir . '/mockery/mockery/library/Mockery/MockInterface.php',
-<<<<<<< HEAD
     'Mockery\\QuickDefinitionsConfiguration' => $vendorDir . '/mockery/mockery/library/Mockery/QuickDefinitionsConfiguration.php',
-=======
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     'Mockery\\ReceivedMethodCalls' => $vendorDir . '/mockery/mockery/library/Mockery/ReceivedMethodCalls.php',
     'Mockery\\Reflector' => $vendorDir . '/mockery/mockery/library/Mockery/Reflector.php',
     'Mockery\\Undefined' => $vendorDir . '/mockery/mockery/library/Mockery/Undefined.php',

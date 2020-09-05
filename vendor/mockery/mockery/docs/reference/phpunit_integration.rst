@@ -114,15 +114,6 @@ Make sure Composer's or Mockery's autoloader is present in the bootstrap file
 or we will need to also define a "file" attribute pointing to the file of the
 ``TestListener`` class.
 
-<<<<<<< HEAD
-=======
-.. caution::
-
-    The ``TestListener`` will only work for PHPUnit 6+ versions.
-
-    For PHPUnit versions 5 and lower, the test listener does not work.
-
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 If we are creating the test suite programmatically we may add the listener
 like this:
 

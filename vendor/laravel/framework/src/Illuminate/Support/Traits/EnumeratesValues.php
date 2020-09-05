@@ -181,8 +181,8 @@ trait EnumeratesValues
      */
     public function dump()
     {
-        (new Collection(func_get_args()))
-            ->push($this->all())
+        (new static(func_get_args()))
+            ->push($this)
             ->each(function ($item) {
                 VarDumper::dump($item);
             });

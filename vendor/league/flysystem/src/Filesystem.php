@@ -74,11 +74,7 @@ class Filesystem implements FilesystemInterface
      */
     public function writeStream($path, $resource, array $config = [])
     {
-<<<<<<< HEAD
         if ( ! is_resource($resource) || get_resource_type($resource) !== 'stream') {
-=======
-        if ( ! is_resource($resource)) {
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             throw new InvalidArgumentException(__METHOD__ . ' expects argument #2 to be a valid resource.');
         }
 
@@ -111,11 +107,7 @@ class Filesystem implements FilesystemInterface
      */
     public function putStream($path, $resource, array $config = [])
     {
-<<<<<<< HEAD
         if ( ! is_resource($resource) || get_resource_type($resource) !== 'stream') {
-=======
-        if ( ! is_resource($resource)) {
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             throw new InvalidArgumentException(__METHOD__ . ' expects argument #2 to be a valid resource.');
         }
 
@@ -123,11 +115,7 @@ class Filesystem implements FilesystemInterface
         $config = $this->prepareConfig($config);
         Util::rewindStream($resource);
 
-<<<<<<< HEAD
         if ( ! $this->getAdapter() instanceof CanOverwriteFiles && $this->has($path)) {
-=======
-        if ( ! $this->getAdapter() instanceof CanOverwriteFiles &&$this->has($path)) {
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             return (bool) $this->getAdapter()->updateStream($path, $resource, $config);
         }
 
@@ -170,11 +158,7 @@ class Filesystem implements FilesystemInterface
      */
     public function updateStream($path, $resource, array $config = [])
     {
-<<<<<<< HEAD
         if ( ! is_resource($resource) || get_resource_type($resource) !== 'stream') {
-=======
-        if ( ! is_resource($resource)) {
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             throw new InvalidArgumentException(__METHOD__ . ' expects argument #2 to be a valid resource.');
         }
 
@@ -286,12 +270,8 @@ class Filesystem implements FilesystemInterface
         $directory = Util::normalizePath($directory);
         $contents = $this->getAdapter()->listContents($directory, $recursive);
 
-<<<<<<< HEAD
         return (new ContentListingFormatter($directory, $recursive, $this->config->get('case_sensitive', true)))
             ->formatListing($contents);
-=======
-        return (new ContentListingFormatter($directory, $recursive))->formatListing($contents);
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
@@ -321,11 +301,7 @@ class Filesystem implements FilesystemInterface
             return false;
         }
 
-<<<<<<< HEAD
         return (int) $object['timestamp'];
-=======
-        return $object['timestamp'];
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
@@ -389,11 +365,7 @@ class Filesystem implements FilesystemInterface
 
         if ( ! $handler) {
             $metadata = $this->getMetadata($path);
-<<<<<<< HEAD
             $handler = ($metadata && $metadata['type'] === 'file') ? new File($this, $path) : new Directory($this, $path);
-=======
-            $handler = $metadata['type'] === 'file' ? new File($this, $path) : new Directory($this, $path);
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
         }
 
         $handler->setPath($path);

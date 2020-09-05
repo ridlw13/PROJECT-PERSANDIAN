@@ -20,14 +20,6 @@
 
 namespace Mockery\Adapter\Phpunit;
 
-<<<<<<< HEAD
-=======
-if (class_exists('PHPUnit_Framework_TestCase') || version_compare(\PHPUnit\Runner\Version::id(), '8.0.0', '<')) {
-    class_alias(MockeryTestCaseSetUpForV7AndPrevious::class, MockeryTestCaseSetUp::class);
-} else {
-    class_alias(MockeryTestCaseSetUpForV8::class, MockeryTestCaseSetUp::class);
-}
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 abstract class MockeryTestCase extends \PHPUnit\Framework\TestCase
 {
     use MockeryPHPUnitIntegration;
@@ -40,25 +32,4 @@ abstract class MockeryTestCase extends \PHPUnit\Framework\TestCase
     protected function mockeryTestTearDown()
     {
     }
-<<<<<<< HEAD
-=======
-
-    public function expectExceptionMessageRegEx($regularExpression)
-    {
-        if (method_exists(get_parent_class(), 'expectExceptionMessageRegExp')) {
-            return parent::expectExceptionMessageRegExp($regularExpression);
-        }
-
-        return $this->expectExceptionMessageMatches($regularExpression);
-    }
-
-    public static function assertMatchesRegEx($pattern, $string, $message = '')
-    {
-        if (method_exists(get_parent_class(), 'assertMatchesRegularExpression')) {
-            parent::assertMatchesRegularExpression($pattern, $string, $message);
-        }
-
-        self::assertRegExp($pattern, $string, $message);
-    }
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 }
