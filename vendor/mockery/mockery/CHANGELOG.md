@@ -1,5 +1,6 @@
 # Change Log
 
+<<<<<<< HEAD
 ## 1.4.2 (2020-08-11)
 * Fix array to string conversion in ConstantsPass (#1086)
 * Fixed nullable PHP 8.0 union types (#1088, #1089)
@@ -19,6 +20,20 @@
 * Fix mocking with anonymous classes (#1039)
 * Fix andAnyOthers() to properly match earlier expectations (#1051)
 * Drops support for PHP < 7.3 and PHPUnit < 8 (#1059)
+=======
+## 1.3.3 (2020-08-11)
+* Fix array to string conversion in ConstantsPass (#1086)
+* Fixed nullable PHP 8.0 union types (#1088)
+* Fixed support for PHP 8.0 parent type (#1088)
+* Fixed PHP 8.0 mixed type support (#1088)
+* Fixed PHP 8.0 union return types (#1088)
+
+## 1.3.2 (2020-07-09)
+* Fix mocking with anonymous classes (#1039)
+* Fix andAnyOthers() to properly match earlier expectations (#1051)
+* Added provisional support for PHP 8.0 (#1068, #1072,#1079)
+* Fix mocking methods with iterable return type without specifying a return value (#1075)
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 
 ## 1.3.1 (2019-12-26)
 * Revert improved exception debugging due to BC breaks (#1032)

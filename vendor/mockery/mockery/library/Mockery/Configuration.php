@@ -41,11 +41,14 @@ class Configuration
     protected $_allowMockingMethodsUnnecessarily = true;
 
     /**
+<<<<<<< HEAD
      * @var QuickDefinitionsConfiguration
      */
     protected $_quickDefinitionsConfiguration;
 
     /**
+=======
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
      * Parameter map for use with PHP internal classes.
      *
      * @var array
@@ -62,11 +65,14 @@ class Configuration
      */
     protected $_reflectionCacheEnabled = true;
 
+<<<<<<< HEAD
     public function __construct()
     {
         $this->_quickDefinitionsConfiguration = new QuickDefinitionsConfiguration();
     }
 
+=======
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     /**
      * Set boolean to allow/prevent mocking of non-existent methods
      *
@@ -88,6 +94,7 @@ class Configuration
     }
 
     /**
+<<<<<<< HEAD
      * Set boolean to allow/prevent unnecessary mocking of methods
      *
      * @param bool $flag
@@ -97,6 +104,17 @@ class Configuration
     public function allowMockingMethodsUnnecessarily($flag = true)
     {
         @trigger_error(sprintf("The %s method is deprecated and will be removed in a future version of Mockery", __METHOD__), E_USER_DEPRECATED);
+=======
+     * @deprecated
+     *
+     * Set boolean to allow/prevent unnecessary mocking of methods
+     *
+     * @param bool $flag
+     */
+    public function allowMockingMethodsUnnecessarily($flag = true)
+    {
+        trigger_error(sprintf("The %s method is deprecated and will be removed in a future version of Mockery", __METHOD__), E_USER_DEPRECATED);
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 
         $this->_allowMockingMethodsUnnecessarily = (bool) $flag;
     }
@@ -105,12 +123,19 @@ class Configuration
      * Return flag indicating whether mocking non-existent methods allowed
      *
      * @return bool
+<<<<<<< HEAD
      *
      * @deprecated since 1.4.0
      */
     public function mockingMethodsUnnecessarilyAllowed()
     {
         @trigger_error(sprintf("The %s method is deprecated and will be removed in a future version of Mockery", __METHOD__), E_USER_DEPRECATED);
+=======
+     */
+    public function mockingMethodsUnnecessarilyAllowed()
+    {
+        trigger_error(sprintf("The %s method is deprecated and will be removed in a future version of Mockery", __METHOD__), E_USER_DEPRECATED);
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
 
         return $this->_allowMockingMethodsUnnecessarily;
     }
@@ -171,6 +196,7 @@ class Configuration
     }
 
     /**
+<<<<<<< HEAD
      * Returns the quick definitions configuration
      */
     public function getQuickDefinitions(): QuickDefinitionsConfiguration
@@ -179,6 +205,8 @@ class Configuration
     }
 
     /**
+=======
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
      * Disable reflection caching
      *
      * It should be always enabled, except when using

@@ -1,18 +1,24 @@
 {
     "name": "league/flysystem",
+<<<<<<< HEAD
     "type": "library",
+=======
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     "description": "Filesystem abstraction: Many filesystems, one API.",
     "keywords": [
         "filesystem", "filesystems", "files", "storage", "dropbox", "aws",
         "abstraction", "s3", "ftp", "sftp", "remote", "webdav",
         "file systems", "cloud", "cloud files", "rackspace", "copy.com"
     ],
+<<<<<<< HEAD
     "funding": [
         {
             "type": "other",
             "url": "https://offset.earth/frankdejonge"
         }
     ],
+=======
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     "license": "MIT",
     "authors": [
         {
@@ -21,6 +27,7 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5 || ^8.0",
         "ext-fileinfo": "*",
         "league/mime-type-detection": "^1.3"
@@ -28,6 +35,14 @@
     "require-dev": {
         "phpspec/prophecy": "^1.11.1",
         "phpunit/phpunit": "^8.5.8"
+=======
+        "php": ">=5.5.9"
+    },
+    "require-dev": {
+        "ext-fileinfo": "*",
+        "phpspec/phpspec": "^3.4",
+        "phpunit/phpunit": "^5.7.10"
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     },
     "autoload": {
         "psr-4": {
@@ -37,7 +52,14 @@
     "autoload-dev": {
         "psr-4": {
             "League\\Flysystem\\Stub\\": "stub/"
+<<<<<<< HEAD
         }
+=======
+        },
+        "files": [
+          "tests/PHPUnitHacks.php"
+        ]
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     },
     "suggest": {
         "ext-fileinfo": "Required for MimeType",
@@ -58,12 +80,21 @@
     "conflict": {
         "league/flysystem-sftp": "<1.0.6"
     },
+<<<<<<< HEAD
+=======
+    "config": {
+        "bin-dir": "bin"
+    },
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     "extra": {
         "branch-alias": {
             "dev-master": "1.1-dev"
         }
+<<<<<<< HEAD
     },
     "scripts": {
         "phpstan": "php phpstan.php"
+=======
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 }

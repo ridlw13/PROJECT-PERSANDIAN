@@ -194,7 +194,11 @@ class Expectation implements ExpectationInterface
     /**
      * Throws an exception if the expectation has been configured to do so
      *
+<<<<<<< HEAD
      * @throws \Throwable
+=======
+     * @throws \Exception|\Throwable
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
      * @return void
      */
     private function throwAsNecessary($return)
@@ -203,7 +207,13 @@ class Expectation implements ExpectationInterface
             return;
         }
 
+<<<<<<< HEAD
         if ($return instanceof \Throwable) {
+=======
+        $type = \PHP_VERSION_ID >= 70000 ? "\Throwable" : "\Exception";
+
+        if ($return instanceof $type) {
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
             throw $return;
         }
 

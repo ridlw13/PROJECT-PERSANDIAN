@@ -18,15 +18,14 @@
  * @license   http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
  */
 
-namespace Mockery\Adapter\Phpunit;
+namespace Mockery\Adapter\Phpunit\Legacy;
 
-<<<<<<< HEAD
 use PHPUnit\Framework\Test;
+use PHPUnit\Framework\TestListener;
 use PHPUnit\Framework\TestListenerDefaultImplementation;
 use PHPUnit\Framework\TestSuite;
-use PHPUnit\Framework\TestListener as PHPUnitTestListener;
 
-class TestListener implements PHPUnitTestListener
+class TestListenerForV7 implements TestListener
 {
     use TestListenerDefaultImplementation;
 
@@ -37,26 +36,20 @@ class TestListener implements PHPUnitTestListener
         $this->trait = new TestListenerTrait();
     }
 
+
+    /**
+     * {@inheritdoc}
+     */
     public function endTest(Test $test, float $time): void
     {
         $this->trait->endTest($test, $time);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function startTestSuite(TestSuite $suite): void
     {
         $this->trait->startTestSuite();
-=======
-if (class_exists('PHPUnit_Runner_Version') && version_compare(\PHPUnit_Runner_Version::id(), '6.0.0', '<')) {
-    class_alias('Mockery\Adapter\Phpunit\Legacy\TestListenerForV5', 'Mockery\Adapter\Phpunit\TestListener');
-} elseif (version_compare(\PHPUnit\Runner\Version::id(), '7.0.0', '<')) {
-    class_alias('Mockery\Adapter\Phpunit\Legacy\TestListenerForV6', 'Mockery\Adapter\Phpunit\TestListener');
-} else {
-    class_alias('Mockery\Adapter\Phpunit\Legacy\TestListenerForV7', 'Mockery\Adapter\Phpunit\TestListener');
-}
-
-if (false) {
-    class TestListener
-    {
->>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 }

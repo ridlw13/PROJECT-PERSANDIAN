@@ -13,13 +13,17 @@ class ContentListingFormatter
      * @var string
      */
     private $directory;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     /**
      * @var bool
      */
     private $recursive;
 
     /**
+<<<<<<< HEAD
      * @var bool
      */
     private $caseSensitive;
@@ -33,6 +37,15 @@ class ContentListingFormatter
         $this->directory = rtrim($directory, '/');
         $this->recursive = $recursive;
         $this->caseSensitive = $caseSensitive;
+=======
+     * @param string $directory
+     * @param bool   $recursive
+     */
+    public function __construct($directory, $recursive)
+    {
+        $this->directory = $directory;
+        $this->recursive = $recursive;
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
@@ -44,9 +57,20 @@ class ContentListingFormatter
      */
     public function formatListing(array $listing)
     {
+<<<<<<< HEAD
         $listing = array_filter(array_map([$this, 'addPathInfo'], $listing), [$this, 'isEntryOutOfScope']);
 
         return $this->sortListing(array_values($listing));
+=======
+        $listing = array_values(
+            array_map(
+                [$this, 'addPathInfo'],
+                array_filter($listing, [$this, 'isEntryOutOfScope'])
+            )
+        );
+
+        return $this->sortListing($listing);
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     private function addPathInfo(array $entry)
@@ -87,9 +111,13 @@ class ContentListingFormatter
             return true;
         }
 
+<<<<<<< HEAD
         return $this->caseSensitive
             ? strpos($entry['path'], $this->directory . '/') === 0
             : stripos($entry['path'], $this->directory . '/') === 0;
+=======
+        return strpos($entry['path'], $this->directory . '/') === 0;
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
@@ -101,9 +129,13 @@ class ContentListingFormatter
      */
     private function isDirectChild(array $entry)
     {
+<<<<<<< HEAD
         return $this->caseSensitive
             ? $entry['dirname'] === $this->directory
             : strcasecmp($this->directory, $entry['dirname']) === 0;
+=======
+        return Util::dirname($entry['path']) === $this->directory;
+>>>>>>> 17e8ade58de7d6c2fad2169002629c2856f06f11
     }
 
     /**
