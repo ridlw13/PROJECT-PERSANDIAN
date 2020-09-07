@@ -28,23 +28,8 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
-      <li class="nav-item ">
-        <a class="nav-link" href="">
-        <i class="fas fa-user"></i>
-          <span>Lihat data responden</span>
-          </a>
-      </li> 
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="">
-        <i class="fas fa-question"></i>
-          <span>Isi Kuesioner</span></a>
-      </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -55,6 +40,15 @@
 
 
       <!-- Nav Item - Charts -->
+      <li class="nav-item ">
+        <a class="nav-link" href="">
+        <i class="fas fa-user"></i>
+          <span>Lihat data responden</span>
+          </a>
+      </li> 
+
+      <hr class="sidebar-divider">
+
       <li class="nav-item">
         <a class="nav-link" href="">
           <i class="fas fa-fw fa-chart-area"></i>
