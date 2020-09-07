@@ -8,7 +8,8 @@
 <div class="container">
  <div class="row">
   <div class="col-6">
-  <form>  
+  <form>
+  
     <div class="form-group">
     <label for="inputState">Identitas Instansi atau Perusahaan :</label>
       <select id="inputState" class="form-control">

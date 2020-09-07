@@ -22,7 +22,7 @@ Route::get('/','otentikasi\OtentikasiController@index')->name('login');
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard', function () {
     
-        return view('templates/master');
+        return view('isiData');
     });
     Route::get('logout','otentikasi\OtentikasiController@logout')->name('logout');
 }); 
