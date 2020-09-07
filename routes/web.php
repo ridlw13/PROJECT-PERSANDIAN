@@ -19,17 +19,17 @@ Route::post('/','otentikasi\OtentikasiController@login')->name('login');
 //2
 Route::get('/','otentikasi\OtentikasiController@index')->name('login');
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::get('/isiData', function () {
-    
-        return view('/responden/isiData');
-    });
-    Route::get('logout','otentikasi\OtentikasiController@logout')->name('logout');
-}); 
 // Route::group(['middleware' => 'auth'], function(){
-//     Route::get('/halamanAdmin', function () {
+//     Route::get('/isiData', function () {
     
-//         return view('/admin/halamanAdmin');
+//         return view('/responden/isiData');
 //     });
 //     Route::get('logout','otentikasi\OtentikasiController@logout')->name('logout');
 // }); 
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/halamanAdmin', function () {
+    
+        return view('/admin/halamanAdmin');
+    });
+    Route::get('logout','otentikasi\OtentikasiController@logout')->name('logout');
+}); 
