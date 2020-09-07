@@ -20,9 +20,16 @@ Route::post('/','otentikasi\OtentikasiController@login')->name('login');
 Route::get('/','otentikasi\OtentikasiController@index')->name('login');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/dashboard', function () {
+    Route::get('/isiData', function () {
     
-        return view('isiData');
+        return view('/responden/isiData');
     });
     Route::get('logout','otentikasi\OtentikasiController@logout')->name('logout');
 }); 
+// Route::group(['middleware' => 'auth'], function(){
+//     Route::get('/halamanAdmin', function () {
+    
+//         return view('/admin/halamanAdmin');
+//     });
+//     Route::get('logout','otentikasi\OtentikasiController@logout')->name('logout');
+// }); 
